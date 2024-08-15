@@ -26,21 +26,21 @@ public class P2_Examen1_NombreApellido {
     public static void menu() {
         boolean bandera = true;
         while (bandera) {
-              //NOTA: No olvide reemplazar su nombre
-        String menu = "PRIMER EXAMEN PARCIAL, PROGRAMACIÓN 2\n" +
-              "reemplace con su nombre y apellido\n" +
-              "1. Agregar Figura\n" +
-              "2. Calcular área de una figura\n" +
-              "3. Listar figuras\n" +
-              "4. ¿Por qué es posible tener dos métodos con el mismo nombre? ¿Cómo se llama esta característica en Java?\n" +
-              "5. Salir\n"+
-        "-> ingrese la opción deseada";
-
+            //NOTA: No olvide reemplazar su nombre
+            String menu = "PRIMER EXAMEN PARCIAL, PROGRAMACIÓN 2\n"
+                    + "reemplace con su nombre y apellido\n"
+                    + "1. Agregar Figura\n"
+                    + "2. Calcular área de una figura\n"
+                    + "3. Listar figuras\n"
+                    + "4. ¿Por qué es posible tener dos métodos con el mismo nombre? ¿Cómo se llama esta característica en Java?\n"
+                    + "5. Salir\n"
+                    + "-> ingrese la opción deseada";
 
             bandera = menu(leerEntrada(menu, 5));
         }
 
     }
+
     public static int leerEntrada(String mensaje, int limite) {
         Scanner entrada = new Scanner(System.in);
         int resp;
@@ -70,7 +70,8 @@ public class P2_Examen1_NombreApellido {
             case 3 ->
                 listarFiguras();
             case 4 -> {
-                //NOTA: Reemplace su respuesta aqui
+                System.out.println("esto se debe a la sobrecarga de metodos, la sobrecarga de metodos permite que un meotodo comparta"
+                        + "nombre con otro metodo siempre y cuando sus parametros no sean compartidos ");
             }
             case 5 -> {
                 System.out.println("\nSaliendo del programa....");
@@ -87,7 +88,7 @@ public class P2_Examen1_NombreApellido {
         int limite = 2;
         String mensaje = "\nIngrese el tipo de figura que desea crear: \n 1.circulo \n 2.cuadrado";
         if (figuras.size() >= 2) {
-            mensaje+=" \n 3.Figura compuesta";
+            mensaje += " \n 3.Figura compuesta";
             limite = 3;
         }
 
@@ -102,12 +103,15 @@ public class P2_Examen1_NombreApellido {
             }
             case 2 -> {
                 double lado = leerEntrada("\nIngrese el lado del cuadrado: ", 20.0);
-                figuras.add(new Cuadrado(lado));
+                figuras.add(new Cuadrado(lado) {
+                });
                 System.out.println("Cuadrado agregado.\n");
             }
             case 3 -> {
+
                 figuras.add(crearFiguraCompuesta());
                 System.out.println("Figura compuesta creada.\n");
+
             }
         }
     }
@@ -119,7 +123,7 @@ public class P2_Examen1_NombreApellido {
         }
 
         listarFiguras();
-        int opcion = leerEntrada("Seleccione la figura para calcular el área:", figuras.size()-1);
+        int opcion = leerEntrada("Seleccione la figura para calcular el área:", figuras.size() - 1);
         double area = figuras.get(opcion).calcularArea();
         System.out.println("\nEl área de la figura seleccionada es: " + area);
     }
@@ -129,21 +133,29 @@ public class P2_Examen1_NombreApellido {
             System.out.println("No hay figuras en la lista.");
         } else {
             System.out.println("Figuras en la lista:");
+
             for (int i = 0; i < figuras.size(); i++) {
-                System.out.println((i) + ") " + figuras.get(i));
+                if (figuras.get(i) instanceof Circulo) {
+                    System.out.println((i) + ") Circulo" + figuras.get(i));
+                } else {
+                    System.out.println((i) + ") Cuadrado" + figuras.get(i));
+                }
+
             }
         }
     }
 
     public static FiguraCompuesta crearFiguraCompuesta() {
         FiguraCompuesta figura = new FiguraCompuesta();
+        FiguraCompuesta x = new FiguraCompuesta();
         boolean continuar = true;
         while (continuar) {
             listarFiguras();
             int pos = leerEntrada("\nIngrese el tipo de figura que desea crear:", figuras.size() - 1);
             int opSubMenu = leerEntrada("\nDesea continuar agregando figuras? 1.si, 2.No", 2);
 
-            figura.agregarFigura(figuras.get(pos));
+            figuras.add(figuras.get(pos));
+
             if (opSubMenu == 2) {
                 break;
             }
