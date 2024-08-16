@@ -28,7 +28,7 @@ public class P2_Examen1_NombreApellido {
         while (bandera) {
             //NOTA: No olvide reemplazar su nombre
             String menu = "PRIMER EXAMEN PARCIAL, PROGRAMACIÓN 2\n"
-                    + "reemplace con su nombre y apellido\n"
+                    + "salvador macias\n"
                     + "1. Agregar Figura\n"
                     + "2. Calcular área de una figura\n"
                     + "3. Listar figuras\n"
@@ -71,7 +71,7 @@ public class P2_Examen1_NombreApellido {
                 listarFiguras();
             case 4 -> {
                 System.out.println("esto se debe a la sobrecarga de metodos, la sobrecarga de metodos permite que un meotodo comparta"
-                        + "nombre con otro metodo siempre y cuando sus parametros no sean compartidos ");
+                        + "nombre con otro metodo siempre y cuando sus parametros no sean compartidos \n\n");
             }
             case 5 -> {
                 System.out.println("\nSaliendo del programa....");
@@ -136,9 +136,10 @@ public class P2_Examen1_NombreApellido {
 
             for (int i = 0; i < figuras.size(); i++) {
                 if (figuras.get(i) instanceof Circulo) {
-                    System.out.println((i) + ") Circulo" + figuras.get(i));
+                    System.out.println((i) + ") Circulo" + figuras.get(i).toString());
                 } else {
-                    System.out.println((i) + ") Cuadrado" + figuras.get(i));
+                    System.out.println((i) + ") Cuadrado" + figuras.get(i).toString());
+                    
                 }
 
             }

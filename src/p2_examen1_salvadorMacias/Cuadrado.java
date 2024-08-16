@@ -19,4 +19,11 @@ abstract class Cuadrado extends Figura{
     double calcularArea() {
         return lado * lado;
     }
+
+    @Override
+    public String toString() {
+        return "(L=" + lado+")" ;
+    }
+    
+    
 }

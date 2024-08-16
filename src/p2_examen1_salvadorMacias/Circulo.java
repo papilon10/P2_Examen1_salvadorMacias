@@ -20,5 +20,11 @@ package p2_examen1_salvadorMacias;
         double radio_cuadrado=radio*radio;
         return radio_cuadrado * 3.1416;
     }
+
+    @Override
+    public String toString() {
+        return "(R=" + radio+")" ;
+    }
+    
     
 }
